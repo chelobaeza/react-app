@@ -1,6 +1,6 @@
-# React app with React router
+# React app
 
-React router app using vite and tailwind css.
+React router app (framework mode), TanStack Query, vite and tailwind css.
 
 ## Project
 Created using framework mode with

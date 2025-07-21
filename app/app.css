@@ -13,3 +13,17 @@ body {
     color-scheme: dark;
   }
 }
+
+@layer utilities {
+  .bg-emerald-custom {
+    background-color: #2a945d;
+  }
+
+  .text-emerald-custom {
+    color: #2a945d;
+  }
+
+  .border-emerald-custom {
+    border-color: #2a945d;
+  }
+}
