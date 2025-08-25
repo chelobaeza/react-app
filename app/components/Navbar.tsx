@@ -17,7 +17,11 @@ const Navbar: React.FC = () => {
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `px-3 py-2 rounded font-medium transition-colors duration-200 ${isActive ? "bg-blue-100 text-emerald-custom" : "text-gray-700 hover:bg-gray-100"}`
+                `px-3 py-2 rounded font-medium transition-colors duration-200 ${
+                  isActive
+                    ? "bg-blue-100 text-emerald-custom"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`
               }
               end={item.to === "/"}
             >

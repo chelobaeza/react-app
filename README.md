@@ -3,7 +3,9 @@
 React router app (framework mode), TanStack Query, vite and tailwind css.
 
 ## Project
+
 Created using framework mode with
+
 ```
 npx create-react-router@latest .
 ```

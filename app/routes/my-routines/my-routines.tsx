@@ -1,10 +1,13 @@
-import React from 'react';
+import React from "react";
 import type { Route } from "../home/+types/home";
 
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "My Routines" },
-    { name: "description", content: "View your purchased or assigned physiotherapy routines." },
+    {
+      name: "description",
+      content: "View your purchased or assigned physiotherapy routines.",
+    },
   ];
 }
 
