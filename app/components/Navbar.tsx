@@ -1,33 +1,92 @@
 import React from "react";
-import { NavLink, useLocation } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
+import { useAuth } from "../providers/authProvider";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./dropdownMenu";
+import { User, LogOut, Settings } from "lucide-react";
+import { Button } from "./button";
 
 const Navbar: React.FC = () => {
-  const navItems = [
-    { label: "Explore Routines", to: "/" },
-    { label: "My Routines", to: "/my-routines" },
-  ];
+  const { user, logout } = useAuth();
+  const navItems = {
+    home: { label: "Explore Routines", to: "/" },
+    myRoutines: { label: "Mis Rutinas", to: "/my-routines" },
+    myAccount: { label: "Mi Cuenta", to: "/account" },
+    login: { label: "Iniciar Sesión", to: "/login" },
+    logout: { label: "Cerrar Sesión", to: "/logout" },
+    register: { label: "Registarse", to: "/register" },
+  };
 
   return (
     <nav className="bg-white shadow mb-8">
       <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
         <span className="font-bold text-lg text-emerald-custom">PhysioApp</span>
         <div className="flex space-x-4">
-          {navItems.map((item) => (
+          {
             <NavLink
-              key={item.to}
-              to={item.to}
+              key={navItems.home.to}
+              to={navItems.home.to}
               className={({ isActive }) =>
-                `px-3 py-2 rounded font-medium transition-colors duration-200 ${
-                  isActive
-                    ? "bg-blue-100 text-emerald-custom"
-                    : "text-gray-700 hover:bg-gray-100"
+                `px-3 py-2 text-foreground hover:text-primary transition-colors ${
+                  isActive ? "text-emerald-custom" : "text-gray-700"
                 }`
               }
-              end={item.to === "/"}
+              // end={item.to === "/"}
             >
-              {item.label}
+              {navItems.home.label}
             </NavLink>
-          ))}
+          }
+          {true ? (
+            <>
+              <NavLink
+                to={navItems.myRoutines.to}
+                key={navItems.myRoutines.to}
+                className={({ isActive }) =>
+                  `px-3 py-2 text-foreground hover:text-primary transition-colors ${
+                    isActive ? "text-emerald-custom" : "text-gray-700"
+                  }`
+                }
+              >
+                {navItems.myRoutines.label}
+              </NavLink>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="relative mt-1 h-8 w-8 rounded-full bg-background text-foreground"
+                  >
+                    <User className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-56 border-border outline-ring/50" align="end" forceMount>
+                  <DropdownMenuItem asChild>
+                    <Link to="/account" className="flex items-center">
+                      <Settings className="mr-2 h-4 w-4" />
+                      <span>{navItems.myAccount.label}</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={logout}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>{navItems.logout.label}</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </>
+          ) : (
+            <div className="flex items-center space-x-2">
+              <Button variant="ghost" asChild>
+                <Link to={navItems.login.to}>{navItems.login.label}</Link>
+              </Button>
+              <Button asChild>
+                <Link to={navItems.register.to}>{navItems.register.label}</Link>
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </nav>
