@@ -24,15 +24,22 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-white shadow mb-8">
       <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
-        <span className="font-bold text-lg text-emerald-custom">PhysioApp</span>
-        <div className="flex space-x-4">
+        <div className="flex items-center">
+            <Link to="/" className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                <span className="text-primary-foreground font-bold text-sm">P</span>
+              </div>
+              <span className="font-bold text-xl text-primary">PhysioApp</span>
+            </Link>
+          </div>
+        <div className="flex items-center space-x-4">
           {
             <NavLink
               key={navItems.home.to}
               to={navItems.home.to}
               className={({ isActive }) =>
                 `px-3 py-2 text-foreground hover:text-primary transition-colors ${
-                  isActive ? "text-emerald-custom" : "text-gray-700"
+                  isActive ? "text-accent" : "text-gray-700"
                 }`
               }
               // end={item.to === "/"}
@@ -40,14 +47,14 @@ const Navbar: React.FC = () => {
               {navItems.home.label}
             </NavLink>
           }
-          {true ? (
+          {user ? (
             <>
               <NavLink
                 to={navItems.myRoutines.to}
                 key={navItems.myRoutines.to}
                 className={({ isActive }) =>
                   `px-3 py-2 text-foreground hover:text-primary transition-colors ${
-                    isActive ? "text-emerald-custom" : "text-gray-700"
+                    isActive ? "text-accent" : "text-gray-700"
                   }`
                 }
               >
@@ -80,11 +87,11 @@ const Navbar: React.FC = () => {
           ) : (
             <div className="flex items-center space-x-2">
               <Button variant="ghost" asChild>
-                <Link to={navItems.login.to}>{navItems.login.label}</Link>
+                <NavLink to={navItems.login.to}>{navItems.login.label}</NavLink>
               </Button>
-              <Button asChild>
-                <Link to={navItems.register.to}>{navItems.register.label}</Link>
-              </Button>
+              {/* <Button asChild>
+                <NavLink to={navItems.register.to}>{navItems.register.label}</NavLink>
+              </Button> */}
             </div>
           )}
         </div>
