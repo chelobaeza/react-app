@@ -6,9 +6,9 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./dropdownMenu";
+} from "./DropdownMenu";
 import { User, LogOut, Settings } from "lucide-react";
-import { Button } from "./button";
+import { Button } from "./Button";
 
 const Navbar: React.FC = () => {
   const { user, logout } = useAuth();

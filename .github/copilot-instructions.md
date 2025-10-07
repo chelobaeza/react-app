@@ -9,7 +9,7 @@ Use React, TypeScript, Vite, and React Router. Prioritize clean, maintainable co
 - Use React Query for data fetching and state management.
 - Use React Hook Form for form handling.
 - fetch and follow React Router docs from https://reactrouter.com/home.
-- follow strict code quality and React router best practices.
+- follow strict code quality and React router best practices from this guide https://github.com/airbnb/javascript/tree/master/react.
 - Style must be responsive to support large screens and mobile devices.
 
 ## Architecture
