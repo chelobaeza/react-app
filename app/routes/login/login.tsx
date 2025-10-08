@@ -7,7 +7,7 @@ import { Label } from "~/components/Label"
 import { useState } from "react"
 import { useAuth } from "~/providers/authProvider"
 import { Button } from "~/components/Button"
-import { Link, useNavigate } from "react-router"
+import { Link, useNavigate, useSearchParams } from "react-router"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -16,6 +16,8 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const { login } = useAuth()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const returnTo = searchParams.get("returnTo") || "/"
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -24,7 +26,7 @@ export default function LoginPage() {
 
     try {
       await login(email, password)
-      navigate("/")
+      navigate(returnTo)
     } catch (err) {
       setError("Credenciales inválidas")
     } finally {

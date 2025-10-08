@@ -9,6 +9,8 @@ export default [
   layout("layouts/MainLayout.tsx", [
     index("routes/home/home.tsx"),
     route("login", "routes/login/login.tsx"),
-    route("my-routines", "routes/my-routines/my-routines.tsx"),
+    layout("layouts/AuthLayout.tsx", [
+      route("my-routines", "routes/my-routines/my-routines.tsx"),
+    ]),
   ]),
 ] satisfies RouteConfig;
