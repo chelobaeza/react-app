@@ -1,22 +1,23 @@
+import { LogOut, Settings, User } from "lucide-react";
 import React from "react";
-import { Link, NavLink, useLocation } from "react-router";
+import { Link, NavLink } from "react-router";
 import { useAuth } from "../providers/authProvider";
+import { Button } from "./Button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./DropdownMenu";
-import { User, LogOut, Settings } from "lucide-react";
-import { Button } from "./Button";
+import { ROUTES } from "~/routePaths";
 
 const Navbar: React.FC = () => {
   const { user, logout } = useAuth();
   const navItems = {
-    home: { label: "Explore Routines", to: "/" },
-    myRoutines: { label: "Mis Rutinas", to: "/my-routines" },
+    home: { label: "Explore Routines", to: ROUTES.HOME.to },
+    myRoutines: { label: "Mis Rutinas", to: ROUTES.MY_ROUTINES.to },
     myAccount: { label: "Mi Cuenta", to: "/account" },
-    login: { label: "Iniciar Sesión", to: "/login" },
+    login: { label: "Iniciar Sesión", to: ROUTES.LOGIN.to },
     logout: { label: "Cerrar Sesión", to: "/logout" },
     register: { label: "Registarse", to: "/register" },
   };
@@ -25,7 +26,7 @@ const Navbar: React.FC = () => {
     <nav className="bg-white shadow mb-8">
       <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
         <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2">
+            <Link to={navItems.home.to} className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                 <span className="text-primary-foreground font-bold text-sm">P</span>
               </div>

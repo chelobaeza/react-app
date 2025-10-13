@@ -4,13 +4,14 @@ import {
   index,
   layout,
 } from "@react-router/dev/routes";
+import { ROUTES } from "./routePaths";
 
 export default [
   layout("layouts/MainLayout.tsx", [
     index("routes/home/home.tsx"),
-    route("login", "routes/login/login.tsx"),
+    route(ROUTES.LOGIN.path, "routes/login/login.tsx"),
     layout("layouts/AuthLayout.tsx", [
-      route("my-routines", "routes/my-routines/my-routines.tsx"),
+      route(ROUTES.MY_ROUTINES.path, "routes/my-routines/my-routines.tsx"),
     ]),
   ]),
 ] satisfies RouteConfig;
