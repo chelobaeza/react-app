@@ -12,6 +12,7 @@ export default [
     route(ROUTES.LOGIN.path, "routes/login/login.tsx"),
     layout("layouts/AuthLayout.tsx", [
       route(ROUTES.MY_ROUTINES.path, "routes/my-routines/my-routines.tsx"),
+      route(ROUTES.MY_ROUTINES.ID.path, "routes/my-routines/routine-detail.tsx"),
     ]),
   ]),
 ] satisfies RouteConfig;

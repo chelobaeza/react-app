@@ -121,7 +121,7 @@ const MyRoutines: React.FC = () => {
           onValueChange={setActiveTab}
           className="space-y-6"
         >
-          {/* TODO: [Front] Agregar tabs para filtrar por estado
+          {/* TODO: Agregar tabs para filtrar por estado
           <TabsList>
             <TabsTrigger value="all">
               Todas ({mockPurchasedRoutines.length})
